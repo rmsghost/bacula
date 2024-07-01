@@ -1,2 +1,16 @@
 vol_bd/
 prometheus-data/
+Scripts/
+Lib/
+Include/
+bin/
+build/
+develop-eggs/
+dist/
+eggs/
+lib/
+lib64/
+pyvenv.cfg
+*.zip
+lambdaec2/
+*.log
