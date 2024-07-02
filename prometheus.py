@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-from prometheus_client import make_wsgi_app, Counter, Histogram
+from prometheus_client import make_wsgi_app, Counter, Histogram, Gauge
 from werkzeug.middleware.dispatcher import DispatcherMiddleware
 import time
 
@@ -17,13 +17,34 @@ REQUEST_LATENCY = Histogram(
     'Application Request Latency',
     ['method', 'endpoint']
 )
+REQUEST_LATENCY_G = Gauge(
+    'app_response_time',
+    'App response Time',
+    ['method','endpoint']
+)
+
 @app.route('/')
 def hello():
     start_time = time.time()
     REQUEST_COUNT.labels('GET', '/', 200).inc()
     response = jsonify(message='Hello, world!')
     REQUEST_LATENCY.labels('GET', '/').observe(time.time() - start_time)
+    REQUEST_LATENCY_G.labels('GET','/').set(time.time() - start_time)
     return response
+
+@app.route('/teste/<segundos>', methods=['GET'])
+def teste(segundos):
+    start_time = time.time()
+    REQUEST_COUNT.labels('GET', '/teste', 200).inc()
+    time.sleep(int(segundos))
+    REQUEST_LATENCY.labels('GET','/teste').observe(time.time() - start_time)
+    REQUEST_LATENCY_G.labels('GET','/teste').set(time.time() - start_time)
+    return {
+        'msg':'Ola'        
+    }
+
+
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
