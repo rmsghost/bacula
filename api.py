@@ -1,5 +1,5 @@
 import time
-from flask import Flask,  jsonify, request
+from flask import Flask,  jsonify, request, render_template
 import bd
 from traccing import tracing, opentracing_tracer
 import opentracing
@@ -7,8 +7,6 @@ from flask.wrappers import Response
 import os
 import requests
 import logging
-
-
 
 app = Flask(__name__)
 
@@ -24,6 +22,15 @@ def index():
         'body': 'Welcome to API',
         'arg': name
     })
+
+
+@app.route("/login", methods=['GET'])
+@tracing.trace()
+def login():
+    print(f'Login sendo efetuado')
+
+    return render_template('./html/login.html')
+
 
 #Lista todos os pokemon
 @app.route("/pokemon", methods=['GET'])

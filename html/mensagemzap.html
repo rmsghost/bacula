@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Formulário para envio de mensagem via WPP</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+<body>
+
+
+    <form class="formulario" method="post"  href="./login.html" > 
+        <h2>Envio de mensagem</h2>
+
+        <div class="field">
+            <label for="numero">Número para envio de mensagem: </label>
+            <input type="text" id="numeroTelefone" name="numeroTelefone" placeholder="Numero para WPP*" required>
+        </div>
+        <br>
+        <div class="field">
+            <label for="telefone">Digite a mensagem: </label>
+            <input type="text" id="mensageZap" name="mensagemZap" placeholder="Mensagem">
+        </div>
+
+        <button type="submit">Enviar mensagem</button>
+
+        <button onclick="window.location.href = 'login.html'">link</button>
+        
+    </form>
+</body>
+</html>
