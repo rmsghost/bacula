@@ -4,4 +4,5 @@ COPY requirements.txt .
 EXPOSE 5000
 RUN pip install --no-cache-dir -r requirements.txt
 COPY prometheus.py .
-CMD [ "python", "prometheus.py" ]
+COPY traccingX.py .
+CMD ["gunicorn", "--workers=1", "--bind", "0.0.0.0:5000", "--log-level=info", "prometheus:app"]

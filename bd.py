@@ -98,4 +98,4 @@ def allPokemon():
     cursor.close()
     connexao.close()
 
-    return resultados
+    return (query, resultados)

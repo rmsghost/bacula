@@ -20,21 +20,21 @@ services:
     #   - exist
 
   pyapp:
-    container_name: prometheus-api
+    container_name: pyapp
     ports:
       - "8689:8689"
     build:
       context: .
       dockerfile: dockerfile
     extra_hosts:
-      bd-pkm: 172.23.0.6
+      bd-pkm: 172.26.231.208
     # networks:
     #   - exist
     depends_on:
       - mysql
 
   apimon:
-    container_name: api
+    container_name: apimon
     ports:
       - "5000:5000"
     build:
@@ -51,37 +51,3 @@ services:
 #   devops_rede:
 #     driver: bridge
 #     name: devops_rede
-  prometheus:
-    image: prom/prometheus
-    user: root
-    container_name: "prometheus"
-    hostname: prometheus
-    restart: unless-stopped
-    volumes:
-      - ./prometheus:/etc/prometheus
-      - ./prometheus-data:/prometheus
-    command:
-      - '--config.file=/etc/prometheus/prometheus.yml'
-      - '--storage.tsdb.path=/prometheus'
-    ports:
-      - 9090:9090
-
-  grafana:
-    image: grafana/grafana
-    container_name: grafana
-    restart: unless-stopped
-    ports:
-      - "3000:3000"
-    environment:
-      GF_SECURITY_ADMIN_PASSWORD: admin
-      
-  jaegger:
-    container_name: jaeger
-    image: jaegertracing/all-in-one
-    ports:
-    - "5775:5775/udp"
-    - "6831:6831/udp"
-    - "6832:6832/udp"
-    - "16686:16686"
-    - "14268:14268"
-    - "9411:9411" 
