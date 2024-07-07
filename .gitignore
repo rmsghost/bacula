@@ -20,3 +20,5 @@ lambdaec2/
 *.pub
 EC2DEVOPS
 __pyache__/
+terraform/
+.terraform/
