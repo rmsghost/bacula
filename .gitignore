@@ -1,6 +1,6 @@
 **/.terraform/*
 **/terraform/*
-# .tfstate files
+terraform/
 *.tfstate
 *.tfstate.*
 vol_bd/
@@ -25,4 +25,3 @@ lambdaec2/
 *.pub
 EC2DEVOPS
 __pyache__/
-terraform/.terraform/providers/registry.terraform.io/hashicorp/aws/5.57.0/linux_amd64/terraform-provider-aws_v5.57.0_x5
