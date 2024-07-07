@@ -1,3 +1,8 @@
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
 vol_bd/
 prometheus-data/
 Scripts/
@@ -20,5 +25,3 @@ lambdaec2/
 *.pub
 EC2DEVOPS
 __pyache__/
-terraform/
-.terraform/
