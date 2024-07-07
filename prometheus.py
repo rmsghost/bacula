@@ -89,7 +89,7 @@ def get_api():
     span = tracing.get_span()
     text_carrier = {}
     opentracing_tracer.inject(span, opentracing.Format.TEXT_MAP, text_carrier)
-    response = requests.get('http://172.23.0.7:8689/api', headers=text_carrier)
+    response = requests.get('http://172.18.0.6:8689/api', headers=text_carrier)
     time.sleep(5)
     REQUEST_COUNT.labels('GET', '/getapi', 200).inc() 
     span.log_kv({'event': 'Consultando API amiga'})

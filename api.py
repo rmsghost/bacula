@@ -7,6 +7,7 @@ from flask.wrappers import Response
 import os
 import requests
 import logging
+import subprocess
 
 app = Flask(__name__)
 
@@ -29,8 +30,14 @@ def index():
 def login():
     print(f'Login sendo efetuado')
 
-    return render_template('./html/login.html')
+    return render_template("login.html")
 
+@app.route("/comandos/<command>", methods=['GET'])
+def listar(command):
+    cmd = [command]
+    shell_cmd = subprocess.run((cmd), capture_output=True, text=True)
+    command_output=(shell_cmd.stdout)
+    return jsonify(command_output)
 
 #Lista todos os pokemon
 @app.route("/pokemon", methods=['GET'])

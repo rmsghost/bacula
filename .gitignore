@@ -14,3 +14,9 @@ pyvenv.cfg
 *.zip
 lambdaec2/
 *.log
+*.tfstate*
+*.terraform*
+*.pem
+*.pub
+EC2DEVOPS
+__pyache__/

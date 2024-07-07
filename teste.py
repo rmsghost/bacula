@@ -1,15 +1,9 @@
-import requests, json
-import json
+import os
 
-def req():
-    response = requests.get('http://172.26.228.140:16686/trace/c1c6ede47f9c0e5d')
-    print(response)
-    data = response
-    print(data)
-    teste = 'oi'
+def comando():
+    comando = 'ls'
+    execute = os.system(comando)
     
-    return (data, teste)
+    print (execute)
 
-
-x = req()
-print (x[1])
+comando()
