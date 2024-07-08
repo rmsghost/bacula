@@ -10,8 +10,8 @@ services:
       MYSQL_DATABASE: padrao
       MYSQL_USER: pokemon
       MYSQL_PASSWORD: 123@123
-    volumes:
-      - ./vol_bd:/var/lib/mysql
+    #volumes:
+      #- ./vol_bd:/var/lib/mysql
       # Mapeamento do tipo BIND MOUNT
       #- /home/docker/app/docvolumes/vol_bd:/var/lib/mysql
       # com volume tipo VOLUME
@@ -32,7 +32,7 @@ services:
       context: .
       dockerfile: dockerfile
     extra_hosts:
-      bd-pkm: 172.23.0.6
+      bd-pkm: 172.20.0.6
     # networks:
     #   - exist
     depends_on:
@@ -90,3 +90,21 @@ services:
     - "16686:16686"
     - "14268:14268"
     - "9411:9411" 
+    
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: cadvisor
+    ports:
+    - 8080:8080
+    volumes:
+    - /:/rootfs:ro
+    - /var/run:/var/run:rw
+    - /sys:/sys:ro
+    - /var/lib/docker/:/var/lib/docker:ro
+    depends_on:
+    - prometheus
+    - jaegger
+    - grafana
+    - mysql
+    - prometheus-api
+    - apimon

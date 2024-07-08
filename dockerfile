@@ -3,6 +3,8 @@ WORKDIR /app
 COPY api.py .
 COPY bd.py .
 COPY traccing.py .
+COPY bd-pkm-definition.sql .
+COPY pokemonsimple.csv .
 COPY requirements.txt .
 COPY templates/ ./templates
 RUN ls
