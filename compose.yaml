@@ -18,8 +18,13 @@ services:
       # - vol_bd_new:/var/lib/mysql
     # networks:
     #   - exist
+    deploy:
+      resources:
+        limits:
+          #cpus: "4.0"
+          memory: 250M
 
-  pyapp:
+  prometheus-api:
     container_name: prometheus-api
     ports:
       - "8689:8689"
@@ -34,7 +39,7 @@ services:
       - mysql
 
   apimon:
-    container_name: api
+    container_name: apimon
     ports:
       - "5000:5000"
     build:
