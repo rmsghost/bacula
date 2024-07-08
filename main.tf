@@ -117,7 +117,7 @@ resource "aws_instance" "EC2DOCKER" {
   connection {
       type = "ssh" ##para linux ou type =  "winrm"
       user = "ec2-user" 
-      private_key = file("/home/docker/app/projetct_stackobservability/EC2DEVOPS")
+      private_key = file("EC2DEVOPS")
       host = aws_instance.EC2DOCKER.public_ip
     }
     provisioner "remote-exec" {
