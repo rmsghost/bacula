@@ -75,6 +75,19 @@ resource "aws_vpc_security_group_egress_rule" "any" {
   ip_protocol       = "All"
 }
 
+resource "aws_internet_gateway" "GW" {
+  vpc_id = aws_vpc.STACKOBSERVABILITY.id
+
+  tags = {
+    Name = "GW"
+  }
+}
+
+resource "aws_internet_gateway_attachment" "GWATTACH" {
+  internet_gateway_id = aws_internet_gateway.GW.id
+  vpc_id = aws_vpc.STACKOBSERVABILITY.id
+}
+
 resource "aws_instance" "EC2DOCKER" {
   ami = "ami-0bb84b8ffd87024d8"
   instance_type = "t2.micro"
