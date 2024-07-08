@@ -114,24 +114,26 @@ resource "aws_instance" "EC2DOCKER" {
   associate_public_ip_address = "true" 
   vpc_security_group_ids      = [aws_security_group.SG-EC2.id]
 
-#  connection {
-#      type = "ssh" ##para linux ou type =  "winrm"
-#      user = "ec2-user" 
-#      private_key = file("/home/docker/app/projetct_stackobservability/EC2DEVOPS")
-#      host = aws_instance.EC2DOCKER.public_ip
-#    }
-#    provisioner "remote-exec" {
-#        inline = [ 
-#            "sudo yum update -y", 
-#            "sudo yum install docker -y",
-#            "sudo systemctl start docker",
-#            "sudo yum install git -y",
-#            "git clone https://github.com/rmsghost/projetct_stackobservability.git"
-#            # criar um diretório chamado vol_bd
-#            # na aplicação, criar uma rota para criar o banco de dados e popular enable_dns_hostnames
-#            # colocar o arquivo "pokemon.txt" no repositório e copia-lo para a imagem docker para a aplicação ler
-#         ]
-#    }
+  connection {
+      type = "ssh" ##para linux ou type =  "winrm"
+      user = "ec2-user" 
+      private_key = file("/home/docker/app/projetct_stackobservability/EC2DEVOPS")
+      host = aws_instance.EC2DOCKER.public_ip
+    }
+    provisioner "remote-exec" {
+        inline = [ 
+            "sudo yum update -y", 
+            "sudo yum install docker -y",
+            "sudo systemctl start docker",
+            "sudo yum install git -y",
+            "git clone https://github.com/rmsghost/projetct_stackobservability.git",
+            "sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose",
+            "sudo chmod +x /usr/local/bin/docker-compose"
+            # criar um diretório chamado vol_bd
+            # na aplicação, criar uma rota para criar o banco de dados e popular enable_dns_hostnames
+            # colocar o arquivo "pokemon.txt" no repositório e copia-lo para a imagem docker para a aplicação ler
+         ]
+    }
 
 } #end of file
 
