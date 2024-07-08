@@ -1,0 +1,39 @@
+name: Pipeline Create
+
+on:
+    [workflow_dispatch]
+
+jobs:
+  CI:
+    name: Terraformando Infra
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: AWS config Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1 
+
+      - name: Terraform CLI
+        uses: hashicorp/setup-terraform@v2.0.2
+      
+      - name: Terraform Prepare - Init
+        id: init
+        run: terraform init
+
+      - name: Terraform validate
+        id: validate
+        run: terraform validate
+
+      - name: Terraform plan
+        id: Planejamento
+        run: terraform plan
+      
+      - name: Terraform apply - Criando infra na AWS
+        id: Apply
+        run: terraform apply -auto-approve
+
