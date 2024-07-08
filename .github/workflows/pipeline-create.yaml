@@ -1,4 +1,4 @@
-name: Pipeline Create
+name: Pipeline Create AWS
 
 on:
     [workflow_dispatch]

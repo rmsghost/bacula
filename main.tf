@@ -4,10 +4,17 @@ terraform {
         source = "hashicorp/aws"
         version = "5.57.0"
     }
+    backend "s3" {
+      bucket = "terraformdevopslab" 
+      key = "terraform.tfstate"
+      region = "us-east-1"
+    }
   }
 }
 
-#Usando variáveis de ambiente
+
+
+#Usando variáveis de ambiente - Para rodar em ambiente local
 # export AWS_ACCESS_KEY_ID="anaccesskey"
 # export AWS_SECRET_ACCESS_KEY="asecretkey"
 # export AWS_REGION="us-west-2"
@@ -90,8 +97,6 @@ resource "aws_instance" "EC2DOCKER" {
 #    }
 
 } #end of file
-
-
 
 
 output "infoEC2" {
