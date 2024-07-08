@@ -1,8 +1,8 @@
 name: Pipeline
+
 on:
-  workflow_dispatch
-    branches:
-    - main
+    [workflow_dispatch]
+
 jobs:
   checkout_code:
     name: Terraformando Infra
