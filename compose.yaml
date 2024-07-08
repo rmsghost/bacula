@@ -79,6 +79,13 @@ services:
       - "3000:3000"
     environment:
       GF_SECURITY_ADMIN_PASSWORD: admin
+      GF_PATHS_PROVISIONING: /etc/grafana/provisioning
+      DS_PROMETHEUS: prometheus
+    
+    volumes: 
+      - "./datasources.yaml:/etc/grafana/provisioning/datasources/datasources.yaml"
+      - "./dashboard.json:/var/lib/grafana/dashboards/dashboard.json"
+      - "./default.yaml:/etc/grafana/provisioning/dashboards/default.yaml"
       
   jaegger:
     container_name: jaeger

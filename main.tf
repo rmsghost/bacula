@@ -128,7 +128,9 @@ resource "aws_instance" "EC2DOCKER" {
             "sudo yum install git -y",
             "git clone https://github.com/rmsghost/projetct_stackobservability.git",
             "sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose",
-            "sudo chmod +x /usr/local/bin/docker-compose"
+            "sudo chmod +x /usr/local/bin/docker-compose",
+            "cd projetct_stackobservability",
+            "docker-compose -f compose.yaml up -d --build"
             # criar um diretório chamado vol_bd
             # na aplicação, criar uma rota para criar o banco de dados e popular enable_dns_hostnames
             # colocar o arquivo "pokemon.txt" no repositório e copia-lo para a imagem docker para a aplicação ler
