@@ -17,10 +17,10 @@ Essa API irá funcionar de forma containerizada, juntamente com toda a sua Stack
 
 A API será monitorada utilizando o Prometheus e Jaeger: 
 
-> Jaeger: Irá monitorar os tracings da aplicação. No código estão exemplos de instrumentalização manual e automática.
-> Prometheus: Irá expor métricas customizáveis da aplicação. No código estão exemplos de instrumentalização manual e exposição automática
-> Grafana: Irá conter dashboards para visualização de dados expostos pelo Prometheus e pelo cAdvisor
-> cAdvisor: Funcionará para coletar métricas do estado dos containers, garantindo monitorando de CPU, Memória e disco deles.
+- Jaeger: Irá monitorar os tracings da aplicação. No código estão exemplos de instrumentalização manual e automática.
+- Prometheus: Irá expor métricas customizáveis da aplicação. No código estão exemplos de instrumentalização manual e exposição automática
+- Grafana: Irá conter dashboards para visualização de dados expostos pelo Prometheus e pelo cAdvisor
+= cAdvisor: Funcionará para coletar métricas do estado dos containers, garantindo monitorando de CPU, Memória e disco deles.
 
 
 ## Infraestrutura
@@ -31,10 +31,10 @@ Todo esse projeto poderá rodar localmente em uma máquina que contenha as vers�
 
 Para rodar esse projeto em uma EC2, será necessáiro provisionar uma instância T2.Micro (para se manter no free tier, porém, poderá ter problema de performance com os containers, comento isso na sessão "Performance issues" logo abaixo). O arquivo "main.tf" conterá uma infraestrutura básica na AWS com os seguintes elementos: 
 
-> VPC + 1 subnet pública + Route table
-> 1 Security group (beeem permissivo, leia o código antes de aplica-lo em sua conta.)
-> Internet Gateway
-> 1 EC2
+- VPC + 1 subnet pública + Route table
+- 1 Security group (beeem permissivo, leia o código antes de aplica-lo em sua conta.)
+- Internet Gateway
+- 1 EC2
 
 ## Infraestrutura - Particularidade da EC2
 A EC2 já sobe com um setup (via terraform mesmo) para instalação do Docker e do Docker-compose. Para isso, é necessário criar uma Chave privada, adiciona-la no seu repositório ou localmente, e aponta-la na linha 120 do arquivo "main.tf". Optei por fazer assim para testar um conceito, porém não é o melhor modo de fazer. Você pode usar o "user data" junto com o Terraform. Basta retirar o trecho de código da linha 117 até a linha 135 do arquivo "main.tf" e adicionar a linha abaixo. Dessa forma é muito mais seguro do que usar uma chave EC2 e mais automático:
