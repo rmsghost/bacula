@@ -4,12 +4,12 @@ terraform {
         source = "hashicorp/aws"
         version = "5.57.0"
     }
-    backend "s3" {
+  }
+      backend "s3" {
       bucket = "terraformdevopslab" 
       key = "terraform.tfstate"
       region = "us-east-1"
     }
-  }
 }
 
 
