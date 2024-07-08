@@ -89,7 +89,7 @@ resource "aws_internet_gateway_attachment" "GWATTACH" {
 }
 
 resource "aws_route_table" "RT-OBSERVABILITY" {
-  vpc_id = ws_vpc.STACKOBSERVABILITY.id
+  vpc_id = aws_vpc.STACKOBSERVABILITY.id
   route  {
     cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.GW.id
