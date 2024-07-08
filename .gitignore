@@ -29,8 +29,9 @@ lambdaec2/
 *.pub
 EC2DEVOPS
 PADRAO.pem
-__pyache__/*
+__pyache__/
 teste.py
 ws.py
 wsclient.py
 autogui.py
+*.pyc
