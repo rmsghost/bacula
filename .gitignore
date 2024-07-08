@@ -28,4 +28,9 @@ lambdaec2/
 *.pem
 *.pub
 EC2DEVOPS
-__pyache__/
+PADRAO.pem
+__pyache__/*
+teste.py
+ws.py
+wsclient.py
+autogui.py
