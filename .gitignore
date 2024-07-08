@@ -27,7 +27,6 @@ lambdaec2/
 *.terraform*
 *.pem
 *.pub
-EC2DEVOPS
 PADRAO.pem
 __pyache__/
 teste.py
