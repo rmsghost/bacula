@@ -88,6 +88,25 @@ resource "aws_internet_gateway_attachment" "GWATTACH" {
   vpc_id = aws_vpc.STACKOBSERVABILITY.id
 }
 
+resource "aws_route_table" "RT-OBSERVABILITY" {
+  vpc_id = aws_vpc.OBSERVABILITY.id
+
+  route  {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.GW.id
+  }
+
+  tags = {
+    Name = "RT-OBSERVABILITY"
+  }
+}
+
+resource "aws_route_table_association" "RT-ASSOC" {
+  subnet_id = aws_subnet.SUB_PUB.id
+  route_table_id = aws_route_table.RT-OBSERVABILITY.id
+}
+
+
 resource "aws_instance" "EC2DOCKER" {
   ami = "ami-0bb84b8ffd87024d8"
   instance_type = "t2.micro"
