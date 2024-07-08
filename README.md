@@ -20,7 +20,7 @@ A API será monitorada utilizando o Prometheus e Jaeger:
 - Jaeger: Irá monitorar os tracings da aplicação. No código estão exemplos de instrumentalização manual e automática.
 - Prometheus: Irá expor métricas customizáveis da aplicação. No código estão exemplos de instrumentalização manual e exposição automática
 - Grafana: Irá conter dashboards para visualização de dados expostos pelo Prometheus e pelo cAdvisor
-= cAdvisor: Funcionará para coletar métricas do estado dos containers, garantindo monitorando de CPU, Memória e disco deles.
+- cAdvisor: Funcionará para coletar métricas do estado dos containers, garantindo monitorando de CPU, Memória e disco deles.
 
 
 ## Infraestrutura
@@ -89,6 +89,17 @@ Essa stack irá inicializar 7 containers. Abaixo segue a descrição de como ace
 | Jaeger | 16686 |
 | cAdvisor | 8080 |
 
+
+## Acessando os serviços
+### GRAFANA
+Acesse o grafana pelo endereço do seu host (aws ou local) na porta 3000. A senha é a padrão da imagem [Consulte aqui](https://hub.docker.com/r/grafana/grafana)
+
+### PROMETHEUS
+O servidor Prometheus pode ser acessado na porta 9090. Verifique os Targets dele para se certificar de que todos os containers estão expondo as métricas corretamente.
+
+
+### APIPROMETHEUS e APIMON
+As aplicações podem ser acessadas nas portas 8689 e 5000. Elas são micro APIs que só servem para gerar dados.
 
 
 ## Melhorias
