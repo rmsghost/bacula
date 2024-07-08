@@ -1,0 +1,13 @@
+name: Pipeline
+on:
+  workflow_dispatch
+    branches:
+    - main
+jobs:
+  checkout_code:
+    name: Terraformando Infra
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+      
