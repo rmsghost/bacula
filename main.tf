@@ -112,6 +112,7 @@ resource "aws_instance" "EC2DOCKER" {
   subnet_id = aws_subnet.SUB_PUB.id
   key_name = "DEVOPS"
   associate_public_ip_address = "true" 
+  vpc_security_group_ids      = [aws_security_group.SG-EC2.id]
 
 #  connection {
 #      type = "ssh" ##para linux ou type =  "winrm"
