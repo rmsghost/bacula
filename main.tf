@@ -83,10 +83,10 @@ resource "aws_internet_gateway" "GW" {
   }
 }
 
-resource "aws_internet_gateway_attachment" "GWATTACH" {
-  internet_gateway_id = aws_internet_gateway.GW.id
-  vpc_id = aws_vpc.STACKOBSERVABILITY.id
-}
+#resource "aws_internet_gateway_attachment" "GWATTACH" {
+#  internet_gateway_id = aws_internet_gateway.GW.id
+#  vpc_id = aws_vpc.STACKOBSERVABILITY.id
+#}
 
 resource "aws_route_table" "RT-OBSERVABILITY" {
   vpc_id = aws_vpc.STACKOBSERVABILITY.id
