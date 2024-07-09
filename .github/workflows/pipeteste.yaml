@@ -21,12 +21,14 @@ jobs:
       - name: criando backend.tfvars
         run: |
           cd terraform/
-          echo "bucket = "terraformdevopslab"" > terraform.tfvars
-          echo "key    = "terraform.tfstate"" >> terraform.tfvars
-          echo "region = "us-east-1"" >> terraform.tfvars
+          echo "bucket = "terraformdevopslab"" > backend.tfvars
+          echo "key    = "terraform.tfstate"" >> backend.tfvars
+          echo "region = "us-east-1"" >> backend.tfvars
 
       - name: Verifica tfvars
-        run: cat backend.tfvars
+        run: |
+          cd terraform/
+          cat backend.tfvars
 
       - name: Terraform CLI
         uses: hashicorp/setup-terraform@v2.0.2
