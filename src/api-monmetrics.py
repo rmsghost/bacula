@@ -117,25 +117,18 @@ def cocanan():
     return jsonify(json)
 
 
-
 # @app.route('/rick', methods=['GET'])
 # @tracing.trace()
 # def get_api():
 #     span = tracing.get_span()
-
 #     REQUEST_COUNT.labels('GET', '/getapi', 200).inc()    
-
 #     text_carrier = {}
 #     opentracing_tracer.inject(span, opentracing.Format.TEXT_MAP, text_carrier)
 #     response = requests.get('http://172.21.0.7:8689/rick', headers=text_carrier)
 #     data = response.json()
 #     CALLS_EXTERNAL_API.labels('GET','/getapi','http://172.21.0.7:8689/rick').inc()
-
 #     span.log_kv({'event': 'Consultando INTERNA'})
-
 #    # logging.warning('Consultando API externa')
-
-
 #     return jsonify(data) 
 
 
