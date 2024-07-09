@@ -32,7 +32,7 @@ services:
       context: .
       dockerfile: dockerfile
     extra_hosts:
-      bd-pkm: 172.18.0.3
+      bd-pkm: 172.19.0.5
     # networks:
     #   - exist
     depends_on:
