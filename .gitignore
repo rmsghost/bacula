@@ -34,3 +34,5 @@ ws.py
 wsclient.py
 autogui.py
 *.pyc
+EC2DEVOPS
+EC2DEVOPS.pub
