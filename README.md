@@ -106,3 +106,5 @@ As aplicações podem ser acessadas nas portas 8689 e 5000. Elas são micro APIs
 - As aplicações em Python serão melhoradas, adicionando funcionalidades à elas (novas rotas, novas features)
 - Essas aplicações terão mais métricas com o passar do tempo, e a ideia é adicionarmos outras fontes para o monitoramento (new relic, dynatrace, etc)
 - Esse projeto será modificado para ser utilizado em outras infraestruturas, como Kubernetes, ECS e mais.
+- Painel de alertas e notificações via Telegram
+- Novos dashboards com métricas, et
