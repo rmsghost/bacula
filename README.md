@@ -118,3 +118,6 @@ As aplicações podem ser acessadas nas portas 8689 e 5000. Elas são micro APIs
 
 - Exemplo 2 - Jaeger
 ![screenshot](jaeger_example02.png)
+
+- Exemplo 1 - API
+![screenshot](api_example01.png)
