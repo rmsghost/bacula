@@ -35,8 +35,12 @@ jobs:
 
       - name: Terraform Prepare - Init
         id: init
-        run: terraform init -backend-config=backend.tfvars
+        run: |
+          cd terraform/
+          terraform init -backend-config=backend.tfvars
 
       - name: Terraform plan
         id: plan
-        run: terraform plan
+        run: |
+          cd terraform/
+          terraform plan
