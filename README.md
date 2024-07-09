@@ -1,5 +1,5 @@
 :computer: STACK DE OBSERVABILIDADE :computer:
-### _Projeto para estudo de metologias de monitoramento_
+# _Projeto para estudo de metologias de monitoramento_
 
 ---
 Este projeto consiste em subir uma Stack de observabilidade e estudar seus principais conceitos, expondo a prática alinhada com metologias.
