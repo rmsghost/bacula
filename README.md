@@ -1,8 +1,7 @@
 # _Projeto para estudo de metologias de monitoramento_
 
----
 Este projeto consiste em subir uma Stack de observabilidade e estudar seus principais conceitos, expondo a prática alinhada com metologias.
----
+
 
 ## Descrição - Resumo geral
 Será usado neste projeto: AWS, Terraform, Github e Github Actions, Docker, Python, Grafana, Prometheus, Jaegger e cAdvisor. A base desse projeto é a API em Python, simulando uma aplicação com conexões simples com um banco de dados (mysql) onde através dela será possível consultar um pokemon pelo ID da Pokedex.
