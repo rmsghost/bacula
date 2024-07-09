@@ -1,4 +1,4 @@
-name: Pipeline Destroy AWS
+name: Pipeline to Destroy infra AWS
 
 on: 
     [workflow_dispatch]

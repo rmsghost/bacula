@@ -1,4 +1,4 @@
-name: Pipeline Create AWS
+name: Pipeline to Create infra AWS
 
 on:
     [workflow_dispatch]
