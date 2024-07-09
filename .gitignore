@@ -1,8 +1,6 @@
 **/.terraform/*
 **/terraform/*
 templates/
-terraform/*
-terraform/
 terraform/.terraform/providers/
 terraform/.terraform/providers/*
 terraform/.terraform/providers/registry.terraform.io/hashicorp/aws/5.57.0/linux_amd64/terraform-provider-aws_v5.57.0_x5
