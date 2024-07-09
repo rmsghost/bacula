@@ -5,13 +5,13 @@ terraform {
       version = "5.57.0"
     }
   }
+  #Coloque aqui o bucket e o arquivo de .tfstate
   backend "s3" {
-    bucket = "terraformdevopslab"
-    key    = "terraform.tfstate"
+    bucket = "nome_do_bucket"
+    key    = "nome_do_arquivo"
     region = "us-east-1"
   }
 }
-
 
 
 #Usando variáveis de ambiente - Para rodar em ambiente local
