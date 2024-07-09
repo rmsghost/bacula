@@ -1,0 +1,40 @@
+name: Pipeline de teste
+
+on: 
+    [workflow_dispatch]
+
+jobs:
+  CI:
+    name: TESTE
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: AWS config Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1 
+
+      - name: Terraform CLI
+        uses: hashicorp/setup-terraform@v2.0.2
+      
+      - name: criando backend.tfvars
+        run: |
+          cd terraform/
+          echo "bucket = "terraformdevopslab"" > terraform.tfvars
+          echo "key    = "terraform.tfstate"" >> terraform.tfvars
+          echo "key    = "region = "us-east-1"" >> terraform.tfvars
+
+      - name: Verifica tfvars
+        run: cat backend.tfvars
+
+      - name: Terraform Prepare - Init
+        id: init
+        run: terraform init -backend-config=backend.tfvars
+
+      - name: Terraform plan
+        id: plan
+        run: terraform plan
