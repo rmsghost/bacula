@@ -1,17 +1,6 @@
 import mysql.connector
 import csv
 
-# cursor = conexao.cursor()
-# cursor.execute("SELECT * FROM clientes")
-# resultados = cursor.fetchall()
-# cursor.execute("INSERT INTO clientes (nome, email) VALUES ('João', 'joao@email.com')")
-# cursor.execute("UPDATE clientes SET nome = 'Pedro' WHERE id = 1")
-
-# cursor.execute("SELECT * FROM clientes")
-# resultados = cursor.fetchall()
-
-# cursor.execute("DELETE FROM clientes WHERE id = 1")
-
 def addPokemon():
     connection = None
     try:
@@ -42,7 +31,7 @@ def addPokemon():
     connexao.close()
     return {
         "status_code": 200,
-        "body": "Insersão valida!"
+        "body": "Inserção valida!"
     }
 
 
@@ -96,7 +85,6 @@ def allPokemon():
     resultados = cursor.fetchall()
 
     print(type(resultados))
-    print(resultados[2])
 
     connexao.commit()
     cursor.close()

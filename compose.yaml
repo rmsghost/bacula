@@ -17,34 +17,36 @@ services:
       # com volume tipo VOLUME
       # - vol_bd_new:/var/lib/mysql
     # networks:
-    #   - exist
+    #   - devops
     deploy:
       resources:
         limits:
-          #cpus: "4.0"
+          #cpus: "0.5"
           memory: 250M
 
-  prometheus-api:
-    container_name: prometheus-api
+  api-pokemon:
+    container_name: api-pokemon
     ports:
       - "8689:8689"
     build:
       context: .
       dockerfile: dockerfile
     extra_hosts:
-      bd-pkm: 172.18.0.6
+      bd-pkm: 172.18.0.3
     # networks:
     #   - exist
     depends_on:
       - mysql
 
-  apimon:
-    container_name: apimon
+  api-monmetrics:
+    container_name: api-monmetrics
     ports:
       - "5000:5000"
     build:
       context: .
       dockerfile: dockerobs
+    depends_on:
+      - api-pokemon
 
 #Caso queira utilizar um volume do tipo VOLUME
 #volumes:
@@ -109,9 +111,9 @@ services:
     - /sys:/sys:ro
     - /var/lib/docker/:/var/lib/docker:ro
     depends_on:
-    - prometheus
+    - api-monmetrics
+    - api-pokemon
     - jaegger
     - grafana
     - mysql
-    - prometheus-api
-    - apimon
+    - prometheus

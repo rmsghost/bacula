@@ -26,7 +26,7 @@ def index():
 
 #Essa rota irá criar o banco com todas as tabelas necessárias. Caso ela seja chamada mais de uma vez, ela irá destruir
 #o banco criado inicialmente e irá criar novamente.
-@app.route("/populabanco", methods=['GET'])
+@app.route("/createbd", methods=['GET'])
 @tracing.trace()
 def popula_banco():
     span = tracing.get_span()
@@ -42,8 +42,16 @@ def addpkm():
     span = tracing.get_span()
     with opentracing.tracer.start_span('Insert Pokemons on BD', child_of=span) as span:
         resultado = bd.addPokemon()
-        span.set_tag('Chamada', resultado[0])    
+        span.set_tag('Chamada', 'Insert ok')    
 
+    with opentracing.tracer.start_span('Gerando span aleatório', child_of=span) as span:
+        time.sleep(5)
+        span.set_tag('Ação', 'Sleep apenas para gerar span') 
+
+    return {
+        "status_code": 200,
+        "body": "Pokemons adicionados ao banco de dados"
+    }
 
 @app.route("/login", methods=['GET'])
 @tracing.trace()
