@@ -82,8 +82,8 @@ Essa stack irá inicializar 7 containers. Abaixo segue a descrição de como ace
 
 | SERVICE | PORT |
 | ------ | ------ |
-| api-prometheus | 8689 |
-| apimon | 5000 |
+| api-pokemon | 8689 |
+| api-monmetrics | 5000 |
 | Grafana | 3000 |
 | Prometheus | 9090 |
 | Jaeger | 16686 |
@@ -98,8 +98,20 @@ Acesse o grafana pelo endereço do seu host (aws ou local) na porta 3000. A senh
 O servidor Prometheus pode ser acessado na porta 9090. Verifique os Targets dele para se certificar de que todos os containers estão expondo as métricas corretamente.
 
 
-### APIPROMETHEUS e APIMON
-As aplicações podem ser acessadas nas portas 8689 e 5000. Elas são micro APIs que só servem para gerar dados.
+### API-POKEMON e API-MONMETRICS
+As aplicações podem ser acessadas nas portas 8689 e 5000. Elas são micro APIs que só servem para gerar dados. A primeira API serve para consultar nome e ID de pokemon baseada no ID da Pokedex. A segunda API contém rotas simples para adicionar métricas para serem visualizadas através do Prometheus e Grafana. Abaixo, as consultas que podem ser feitas em cada uma delas (as rotas funcionais):
+
+| API | PATH (get) | O que faz |
+| ------ | ------ | ------ |
+| api-pokemon | / | Retona um Olá |
+| api-pokemon | /createbd | Inicializa um banco de dados - Este passo é necessário para criar o banco |
+| api-pokemon | /addpokemon | Popula o banco criado com todos os pokemon |
+| api-pokemon | /pokemon | Mostra todos os pokemon em ordem da pokedex  |
+| api-pokemon | /consulta/<id-pokedex> | Consulta um pokemon pelo ID da pokedex |
+| api-monmetrics | / | Retorna um Olá |
+| api-monmetrics | /teste/<segundos> | Endpoint para simular latência na API |
+| api-monmetrics | /rick | Endpoint para simular a chamada para uma API externa |
+
 
 
 ## Melhorias
@@ -107,7 +119,7 @@ As aplicações podem ser acessadas nas portas 8689 e 5000. Elas são micro APIs
 - Essas aplicações terão mais métricas com o passar do tempo, e a ideia é adicionarmos outras fontes para o monitoramento (new relic, dynatrace, etc)
 - Esse projeto será modificado para ser utilizado em outras infraestruturas, como Kubernetes, ECS e mais.
 - Painel de alertas e notificações via Telegram
-- Novos dashboards com métricas, et
+- Novos dashboards com métricas, etc.
 
 ## Screenshots
 - Grafana dashboard
