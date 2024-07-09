@@ -108,3 +108,10 @@ As aplicações podem ser acessadas nas portas 8689 e 5000. Elas são micro APIs
 - Esse projeto será modificado para ser utilizado em outras infraestruturas, como Kubernetes, ECS e mais.
 - Painel de alertas e notificações via Telegram
 - Novos dashboards com métricas, et
+
+## Screenshots
+- Grafana dashboard
+![screenshot](grafana_example.png)
+
+- Exemplo Jaeger
+![screenshot](jaeger_example01.png)
