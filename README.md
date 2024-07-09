@@ -1,4 +1,3 @@
-:computer: STACK DE OBSERVABILIDADE :computer:
 # _Projeto para estudo de metologias de monitoramento_
 
 ---
