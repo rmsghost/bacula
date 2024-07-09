@@ -9,7 +9,7 @@ terraform {
 
 resource "aws_instance" "EC2DOCKER" {
   ami                         = "ami-0bb84b8ffd87024d8"
-  instance_type               = "t2.micro"
+  instance_type               = var.INSTANCETYPE
   subnet_id                   = var.SUBNET_ID
   key_name                    = "DEVOPS"
   associate_public_ip_address = "true"

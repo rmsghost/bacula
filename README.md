@@ -31,8 +31,10 @@ Para rodar esse projeto em uma EC2, será necessáiro provisionar uma instância
 - EC2
 
 - Remote State Terraform - S3
-O arquivo MAIN.TF está configurado para utilizar o gerenciamento remoto de estado com S3. Altere as variáveis para corresponder às suas configurações do Bucket.
-
+Este projeto utiliza o gerenciamento de estado remoto com S3. As configurações do backend estão no arquivo backend.tfvars. Altere as variáveis e não se esqueça de inicializar o terraform com o comando abaixo (caso suba o projeto localmente):
+```
+terraform init -backend-config=backend.tfvars
+```
 
 ## Infraestrutura - Particularidade da EC2
 A EC2 já sobe com um setup (via terraform mesmo) para instalação do Docker e do Docker-compose e para o checkout do código fonte . Para isso, é necessário criar uma Chave privada, adiciona-la no seu repositório ou localmente, e aponta-la na linha 120 do arquivo "main.tf". Optei por fazer assim para testar um conceito, porém não é o melhor modo de fazer. Você pode usar o "user data" junto com o Terraform. Basta retirar o trecho de código entre a linha 117 e linha 135 do arquivo "main.tf" e adicionar a linha abaixo. Dessa forma é muito mais seguro do que usar uma chave EC2 e mais automático:

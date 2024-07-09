@@ -5,10 +5,9 @@ terraform {
       version = "5.57.0"
     }
   }
-  backend "s3" {
-    bucket = "terraformdevopslab"
-    key    = "terraform.tfstate"
-    region = "us-east-1"
+
+    backend "s3" {
+      #consulte o arquivo backend.tfvars e mude as variáveis
   }
 }
 
@@ -22,6 +21,7 @@ module "vpc" {
 
 module "ec2" {
   source = "./modules/ec2"
+  #INSTANCETYPE = "t2.medium"
   SUBNET_ID = module.vpc.SUBNET_ID
   SG_ID  = module.vpc.SG_ID
 }
