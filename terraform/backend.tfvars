@@ -1,3 +1,3 @@
-bucket = "teste_x1"
-key    = "teste_x3"
-region = "teste_x4"
+bucket = "terraformdevopslab"
+key    = "terraform.tfstate"
+region = "us-east-1"
