@@ -1,3 +1,3 @@
-bucket = "terraformdevopslab"
-key    = "terraform.tfstate"
-region = "us-east-1"
+bucket = "informe_seu_bucket"
+key    = "informe_seu_arquivo"
+region = "informe_sua_regiao"
