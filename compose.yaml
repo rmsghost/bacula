@@ -18,11 +18,11 @@ services:
       # - vol_bd_new:/var/lib/mysql
     # networks:
     #   - devops
-    deploy:
-      resources:
-        limits:
+    #deploy:
+    #  resources:
+    #    limits:
           #cpus: "0.5"
-          memory: 250M
+          #memory: 250M
 
   api-pokemon:
     container_name: api-pokemon
