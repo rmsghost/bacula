@@ -23,12 +23,12 @@ jobs:
       
       - name: Terraform Prepare - Init
         id: init
-        run: terraform init -backend-config=backend.tfvars
+        run: cd terraform/ && terraform init -backend-config=backend.tfvars
 
       - name: Terraform validate
         id: validate
-        run: terraform validate
+        run: cd terraform/ && terraform validate
 
       - name: Terraform destroy - Destruindo infra na AWS
         id: Destroy
-        run: terraform destroy -auto-approve
+        run: cd terraform/ && terraform destroy -auto-approve
