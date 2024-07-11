@@ -23,21 +23,17 @@ jobs:
       
       - name: Terraform Prepare - Init
         id: init
-        run: cd terraform/
-        run: terraform init -backend-config=backend.tfvars
+        run: cd terraform/ && terraform init -backend-config=backend.tfvars
 
       - name: Terraform validate
         id: validate
-        run: cd terraform/
-        run: terraform validate
+        run: cd terraform/ && terraform validate
 
       - name: Terraform plan
         id: Planejamento
-        run: cd terraform/
-        run: terraform plan
+        run: cd terraform/ && terraform plan
       
       - name: Terraform apply - Criando infra na AWS
         id: Apply
-        run: cd terraform/
-        run: terraform apply -auto-approve
+        run: cd terraform/ && terraform apply -auto-approve
 
